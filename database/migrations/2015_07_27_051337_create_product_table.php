@@ -18,6 +18,7 @@ class CreateProductTable extends Migration {
             $table->tinyInteger('type_id');
             $table->string('name', 64);
             $table->text('description');
+            $table->decimal('price', 10, 2);
             $table->string('longitude', 64);
             $table->string('latitude', 64);
             $table->string('phone', 15);

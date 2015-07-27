@@ -18,7 +18,7 @@ class CreateTransactionTable extends Migration {
             $table->tinyInteger('product_id');
             $table->date('date_start');
             $table->date('date_end');
-            $table->string('total');
+            $table->decimal('total', 10, 2);
             $table->text('note');
             $table->tinyInteger('payment_type');
             $table->tinyInteger('status');
