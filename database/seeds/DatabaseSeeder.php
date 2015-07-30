@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder {
             'people', 'nature', 'sports', 'technics', 'transport'
         ];
 
+        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
         DB::table('city')->truncate();
         DB::table('type')->truncate();
         DB::table('product')->truncate();
@@ -100,6 +101,21 @@ class DatabaseSeeder extends Seeder {
                 ]);
             }
 
+            DB::table('member')->insert([
+                'facebook_id' => $i,
+                'name' => str_random(10),
+                'address' => str_random(20),
+                'ktp_id' => str_random(10),
+                'image' => 'http://lorempixel.com/500/300/' . $dummy_images[rand(0, count($dummy_images) - 1)] . '/' . rand(1, 10),
+                'phone' => str_random(10),
+                'email' => str_random(10),
+                'college' => str_random(10),
+                'company' => str_random(10),
+                'status' => rand(0, 5),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+
             for ($j = 0; $j <= 2; $j++)
             {
                 DB::table('transaction')->insert([
@@ -115,23 +131,9 @@ class DatabaseSeeder extends Seeder {
                     'updated_at' => Carbon::now(),
                 ]);
             }
-
-            DB::table('member')->insert([
-                'facebook_id' => $i,
-                'name' => str_random(10),
-                'address' => str_random(20),
-                'ktp_id' => str_random(10),
-                'image' => 'http://lorempixel.com/500/300/' . $dummy_images[rand(0, count($dummy_images) - 1)] . '/' . rand(1, 10),
-                'phone' => str_random(10),
-                'email' => str_random(10),
-                'college' => str_random(10),
-                'company' => str_random(10),
-                'status' => rand(0, 5),
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
-            ]);
         }
 
+        DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
         // $this->call('UserTableSeeder');
     }

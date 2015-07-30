@@ -14,12 +14,14 @@ class CreateImageTable extends Migration {
     {
         Schema::create('image', function (Blueprint $table) {
             $table->increments('id')->index();
-            $table->tinyInteger('product_id');
+            $table->integer('product_id')->unsigned();
             $table->text('image_url');
             $table->text('description');
             $table->tinyInteger('status');
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->foreign('product_id')->references('id')->on('product');
         });
     }
 

@@ -14,8 +14,8 @@ class CreateProductTable extends Migration {
     {
         Schema::create('product', function (Blueprint $table) {
             $table->increments('id')->index();
-            $table->tinyInteger('city_id');
-            $table->tinyInteger('type_id');
+            $table->integer('city_id')->unsigned();
+            $table->integer('type_id')->unsigned();
             $table->string('name', 64);
             $table->text('description');
             $table->decimal('price', 10, 2);
@@ -27,6 +27,9 @@ class CreateProductTable extends Migration {
             $table->tinyInteger('updated_by');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('city_id')->references('id')->on('city');
+            $table->foreign('type_id')->references('id')->on('type');
         });
     }
 

@@ -13,7 +13,7 @@ class CreateProductFacilityTable extends Migration {
     public function up()
     {
         Schema::create('product_facility', function (Blueprint $table) {
-            $table->tinyInteger('product_id');
+            $table->integer('product_id')->unsigned();
             $table->string('group', 64);
             $table->string('key', 64);
             $table->string('value', 64);
@@ -21,6 +21,8 @@ class CreateProductFacilityTable extends Migration {
             $table->tinyInteger('status');
             $table->timestamps();
             $table->softDeletes();
+            
+            $table->foreign('product_id')->references('id')->on('product');
         });
     }
 
