@@ -33,7 +33,9 @@ class WelcomeController extends Controller {
      */
     public function index()
     {
-        return view('welcome');
+        $data['_TITLE_'] = 'Mau Cari Kost/Kontrakan?';
+
+        return view('home', $data);
     }
 
     public function api()
