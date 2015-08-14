@@ -23,7 +23,7 @@ class WelcomeController extends Controller {
      */
     public function __construct()
     {
-        //$this->middleware('guest');
+        $this->middleware('guest');
     }
 
     /**
@@ -33,7 +33,7 @@ class WelcomeController extends Controller {
      */
     public function index()
     {
-        $data['_TITLE_'] = 'Mau Cari Kost/Kontrakan?';
+        $data['_TITLE_'] = 'Cari Info Kost?';
 
         return view('home', $data);
     }

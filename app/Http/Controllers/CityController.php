@@ -32,4 +32,28 @@ class CityController extends Controller {
         $city = City::find($id);
         return $city;
     }
+
+    /**
+     * Front-end product by city
+     *
+     * @param  city  $city
+     */
+    public function city($city)
+    {
+        $data['_TITLE_'] = 'Cari Info Kost?';
+
+        return view('category/index', $data);
+    }
+
+    /**
+     * Front-end product by city & district
+     *
+     * @param  district  $district
+     */
+    public function district($city, $district)
+    {
+        echo $district;
+    }
+
+    
 }

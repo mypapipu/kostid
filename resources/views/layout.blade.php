@@ -17,6 +17,7 @@
         <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" type="text/css" />
         <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('/css/animate.css') }}" rel="stylesheet" type="text/css" />
+        @yield('custom_css')
 
         <!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -25,14 +26,12 @@
 
         <link href="{{ asset('/img/favicon.ico') }}" rel="Shortcut Icon" type="image/ico" />
 
-        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
 
     </head>
     <body>
 
-        @section('slider')
-            <!-- showing slide -->
-        @show
+        @yield('slider')
 
         <!--header-->     
         <div class="row navbar head linedown">
@@ -84,8 +83,10 @@
 
         <script src="{{ asset('/js/bootstrap.js') }}"></script>
         <script src="{{ asset('/js/jquery.stellar.js') }}"></script>
-        <script src="{{ asset('js/jquery.nicescroll.js') }} "></script>
+        <script src="{{ asset('/js/jquery.nicescroll.js') }} "></script>
         <script src="{{ asset('/js/script.js') }}"></script>
+
+        @yield('custom_js')
 
     </body>
 </html>

@@ -11,15 +11,33 @@
   |
  */
 
-Route::get('/', 'WelcomeController@index');
 //Route::any('/api', 'WelcomeController@api');
-Route::get('home', 'HomeController@index');
+//Route::get('home', 'HomeController@index');
+
+/**
+  * / 
+  * /kota/page/{number}
+  * /kota/kecamatan
+  * /kota/kecamatan/page/{number}
+  * /kost
+  * /kost/page/{}
+  * /kontrakan/
+  * /kontrakan/page/{}
+  * /kost/{kota}
+  * /kost/{}
+  * /detail/{slug} or /detail/{id}
+**/
+
+Route::get('/', 'WelcomeController@index');
+
+
+Route::get('{city}', ['uses' => 'CityController@city'])->where('kota', '(malang)');
+Route::get('{city}/{disctrict}', ['uses' => 'CityController@district'])->where(['city' => '(malang)', 'district' => '([0-9a-z_]+)']);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-
 
 Route::group(['prefix' => 'api'], function() {
     Route::get('city', 'CityController@index');
