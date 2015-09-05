@@ -135,6 +135,7 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
 
 		/*
 		 * Application Service Providers...
@@ -144,8 +145,9 @@ return [
 		'App\Providers\ConfigServiceProvider',
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
-
-                'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+		'Tymon\JWTAuth\Providers\JWTAuthServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
+        'Barryvdh\Cors\ServiceProvider',
 	],
 
 	/*
@@ -160,7 +162,6 @@ return [
 	*/
 
 	'aliases' => [
-
 		'App'       => 'Illuminate\Support\Facades\App',
 		'Artisan'   => 'Illuminate\Support\Facades\Artisan',
 		'Auth'      => 'Illuminate\Support\Facades\Auth',
@@ -193,8 +194,9 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-
-                'JWTAuth'   => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'JWTAuth'   => 'Tymon\JWTAuth\Facades\JWTAuth',
+        'Form'      => 'Illuminate\Html\FormFacade',
+        'HTML'      => 'Illuminate\Html\HtmlFacade',
 	],
 
 ];

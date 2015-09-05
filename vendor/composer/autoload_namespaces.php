@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'phpDocumentor' => array($vendorDir . '/phpdocumentor/reflection-docblock/src'),
     'System' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
-    'Symfony\\Component\\Yaml\\' => array($vendorDir . '/symfony/yaml'),
     'Symfony\\Component\\VarDumper\\' => array($vendorDir . '/symfony/var-dumper'),
     'Symfony\\Component\\Translation\\' => array($vendorDir . '/symfony/translation'),
     'Symfony\\Component\\Security\\Core\\' => array($vendorDir . '/symfony/security-core'),
@@ -17,8 +16,6 @@ return array(
     'Symfony\\Component\\HttpKernel\\' => array($vendorDir . '/symfony/http-kernel'),
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'Symfony\\Component\\Finder\\' => array($vendorDir . '/symfony/finder'),
-    'Symfony\\Component\\Filesystem\\' => array($vendorDir . '/symfony/filesystem'),
-    'Symfony\\Component\\EventDispatcher\\' => array($vendorDir . '/symfony/event-dispatcher'),
     'Symfony\\Component\\Debug\\' => array($vendorDir . '/symfony/debug'),
     'Symfony\\Component\\Console\\' => array($vendorDir . '/symfony/console'),
     'Psy\\' => array($vendorDir . '/psy/psysh/src'),
@@ -32,10 +29,10 @@ return array(
     'JakubOnderka\\PhpConsoleColor' => array($vendorDir . '/jakub-onderka/php-console-color/src'),
     'File' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Dotenv' => array($vendorDir . '/vlucas/phpdotenv/src'),
-    'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src'),
     'Doctrine\\Common\\Inflector\\' => array($vendorDir . '/doctrine/inflector/lib'),
     'Diff' => array($vendorDir . '/phpspec/php-diff/lib'),
     'Crypt' => array($vendorDir . '/phpseclib/phpseclib/phpseclib'),
     'Cron' => array($vendorDir . '/mtdowling/cron-expression/src'),
     'Carbon' => array($vendorDir . '/nesbot/carbon/src'),
+    'Asm89\\Stack' => array($vendorDir . '/asm89/stack-cors/src'),
 );

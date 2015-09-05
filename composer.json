@@ -41,5 +41,7 @@
 	},
 	"config": {
 		"preferred-install": "dist"
-	}
+	},
+	"illuminate/html": "~5.0"
+
 }

@@ -11,47 +11,40 @@
   |
  */
 
+//Route::get('/', 'WelcomeController@index');
 //Route::any('/api', 'WelcomeController@api');
 //Route::get('home', 'HomeController@index');
-
-/**
-  * / 
-  * /kota/page/{number}
-  * /kota/kecamatan
-  * /kota/kecamatan/page/{number}
-  * /kost
-  * /kost/page/{}
-  * /kontrakan/
-  * /kontrakan/page/{}
-  * /kost/{kota}
-  * /kost/{}
-  * /detail/{slug} or /detail/{id}
-**/
-
-Route::get('/', 'WelcomeController@index');
-
-
-Route::get('{city}', ['uses' => 'CityController@city'])->where('kota', '(malang)');
-Route::get('{city}/{disctrict}', ['uses' => 'CityController@district'])->where(['city' => '(malang)', 'district' => '([0-9a-z_]+)']);
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
 ]);
-
 Route::group(['prefix' => 'api'], function() {
-    Route::get('city', 'CityController@index');
-    Route::get('city/{id}', 'CityController@show');
+    Route::get('city', 'CityController@api');
+    Route::get('city/{id}', 'CityController@api_detail');
  
     Route::get('type', 'TypeController@index');
     Route::get('type/{id}', 'TypeController@show');
 
-    Route::get('product', 'ProductController@index');
-    Route::get('product/{id}', 'ProductController@show');
+    Route::get('product', 'ProductController@api');
+    Route::get('product/{id}', 'ProductController@api_detail');
 
     Route::get('member', 'MemberController@index');
     Route::get('member/{id}', 'MemberController@show');
-
+    
     Route::get('transaction', 'TransactionController@index');
     Route::get('transaction/{id}', 'TransactionController@show');
+});
+
+Route::group(['domain' => 'kostid.dev'], function() {
+    Route::get('', 'Frontend\WelcomeController@index');
+
+    Route::get('malang', 'Frontend\WelcomeController@index');
+    Route::get('malang/page/{page}', 'Frontend\WelcomeController@index');
+    Route::get('malang/{district}', 'Frontend\WelcomeController@index');
+    Route::get('malang/{district}/page/{number}', 'Frontend\WelcomeController@index');
+    
+    Route::get('detail/{id}', 'Frontend\WelcomeController@index');
+    
+    Route::get('cart', 'Frontend\WelcomeController@index');
 });

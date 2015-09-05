@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use JWTAuth;
+use App\Http\Requests;
+use Illuminate\Http\Request;
 
 class WelcomeController extends Controller {
     /*
@@ -34,6 +36,8 @@ class WelcomeController extends Controller {
     public function index()
     {
         $data['_TITLE_'] = 'Cari Info Kost?';
+        $data['_KEYWORDS_'] = 'Cari Info Kost?';
+        $data['_DESCRIPTION_'] = 'Cari Info Kost?';
 
         return view('home', $data);
     }

@@ -14,7 +14,7 @@ class ProductController extends Controller {
      *
      * @return Response
      */
-    public function index()
+    public function api()
     {
         $product = Product::allWithRelation(['city' => TRUE, 'type' => TRUE, 'image' => TRUE, 'product_facility' => TRUE]);
         return $product;
@@ -26,7 +26,7 @@ class ProductController extends Controller {
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function api_detail($id)
     {
         $product = Product::find($id);
         $product->product_facility->toArray();
@@ -34,6 +34,30 @@ class ProductController extends Controller {
         $product->city->toArray();
         $product->type->toArray();
         return $product;
+    }
+
+    /**
+     * Display detail product
+     * @param  int $id
+     */
+    public function detail($id)
+    {
+        $product = Product::find($id);
+
+        if (!$product)
+        {
+            App::abort(404);
+        }
+
+        $data['ID'] = $id;
+
+        $data['_TITLE_'] = $product->name;
+        $data['_KEYWORDS_'] = 'Cari Info Kost?';
+        $data['_DESCRIPTION_'] = 'Cari Info Kost?';
+
+        $data['id'] = $id;
+
+        return view('product/detail', $data);
     }
 
 }
