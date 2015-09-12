@@ -13,9 +13,22 @@ angular.module('HomeController', [
 
         $locationProvider.html5Mode(true);
     }])
+.factory('Page', function() {
+    var title = 'default';
+    var keywords = '';
+    var description = '';
+    return {
+        title: function() { return title; },
+        setTitle: function(newTitle) { title = newTitle },
+        keywords: function() { return keywords; },
+        setKeywords: function(newKeywords) { keywords = newKeywords },
+        description: function() { return description; },
+        setDescription: function(newDescription) { description = newDescription },
+    };
+})
 .controller('HomeController',
-    ['$scope', '$rootScope', '$http', '$timeout', '$route', '$location', 
-    function($scope, $rootScope, $http, $timeout, $route, $location) {
+    ['$scope', '$rootScope', '$http', '$timeout', '$route', '$location', 'Page', 
+    function($scope, $rootScope, $http, $timeout, $route, $location, Page) {
         var history = [];
 
         $rootScope.$on('$routeChangeSuccess', function() {
@@ -37,4 +50,6 @@ angular.module('HomeController', [
             .error(function() {
                 console.log('Unable to retrieve info from JSON file.');
             });
+
+        Page.setTitle('Cari Info Kost?');
     }]);

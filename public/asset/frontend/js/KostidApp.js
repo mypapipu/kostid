@@ -1,21 +1,27 @@
-(function() {
-    'use strict';
+var kostidApp = angular.module('kostidApp', [
+    'ngRoute',
+    'HomeController',
+    'CityController',
+    'DetailController',
+    'CartController'
+], function($interpolateProvider) {
+    $interpolateProvider.startSymbol('[[');
+    $interpolateProvider.endSymbol(']]');
+});
 
-    angular.module('kostidApp', [
-        'ngRoute',
-        'ngSanitize',
-        'ngAnimate',
-        'flash',
-        'HomeController',
-        'CityController',
-        'DetailController',
-        'CartController'
-    ], function($interpolateProvider) {
-        $interpolateProvider.startSymbol('[[');
-        $interpolateProvider.endSymbol(']]');
-    });
+/* Setup global settings */
+kostidApp.factory('settings', ['$rootScope', function($rootScope) {
+    // supported languages
+    var settings = {
+        layout: {
+            pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
+        }
+    };
 
-}());
+    $rootScope.settings = settings;
+
+    return settings;
+}]);
 
 function getUrlParameter(name) {
     name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

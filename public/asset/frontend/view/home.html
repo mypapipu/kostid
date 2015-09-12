@@ -66,7 +66,7 @@
 <div class="row margintop">
     <div class="grid">
         <figure class="effect-chico bbb" ng-repeat="item in favorite | limitTo:3:0">
-            <a href="/detail/[[item.image[0].product_id]]">
+            <a href="/detail/[[item.id]]">
                 <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0" />
                 <h3>[[item.name]]</h3>
             </a>
@@ -77,7 +77,7 @@
 <div class="row margintop">
     <div class="grid">
         <figure class="effect-chico bbb" ng-repeat="item in favorite | limitTo:3:3">
-            <a href="/detail/[[item.image[0].product_id]]">
+            <a href="/detail/[[item.id]]">
                 <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0" />
                 <h3>[[item.name]]</h3>
             </a>
@@ -88,7 +88,7 @@
 <div class="row margintop">
     <div class="grid">
         <figure class="effect-chico bbb" ng-repeat="item in favorite | limitTo:3:6">
-            <a href="/detail/[[item.image[0].product_id]]">
+            <a href="/detail/[[item.id]]">
                 <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0" />
                 <h3>[[item.name]]</h3>
             </a>
@@ -124,7 +124,7 @@
 <div class="row margintop">
     <div class="grid">
         <figure class="effect-chico bbb" ng-repeat="item in favorite | limitTo:3:3">
-            <a href="/detail/[[item.image[0].product_id]]">
+            <a href="/detail/[[item.id]]">
                 <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0" />
                 <h3>[[item.name]]</h3>
             </a>
@@ -135,7 +135,7 @@
 <div class="row margintop">
     <div class="grid">
         <figure class="effect-chico bbb" ng-repeat="item in favorite | limitTo:3:6">
-            <a href="/detail/[[item.image[0].product_id]]">
+            <a href="/detail/[[item.id]]">
                 <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0" />
                 <h3>[[item.name]]</h3>
             </a>
@@ -230,11 +230,11 @@
 
 <div class="concon">
     <div class="center col-md-4 marginbottom" ng-repeat="item in favorite | limitTo:3:0">
-        <a href="/detail/[[item.image[0].product_id]]">
+        <a href="/detail/[[item.id]]">
             <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0" style="max-width: 264px;" />
         </a>
         <p>[[item.description]]</p>
-        <a href="/detail/[[item.image[0].product_id]]" class="btn btn-danger animated zoomIn">Read More</a>
+        <a href="/detail/[[item.id]]" class="btn btn-danger animated zoomIn">Read More</a>
     </div>
 
     <div class="row marginbottom">

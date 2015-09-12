@@ -10,6 +10,17 @@ angular.module('DetailController', [])
 
         $locationProvider.html5Mode(true);
     }])
+.factory('Page', function() {
+    var title = 'default';
+    return {
+        title: function() { return title; },
+        setTitle: function(newTitle) { title = newTitle },
+        keywords: function() { return keywords; },
+        setKeywords: function(newKeywords) { keywords = newKeywords },
+        description: function() { return description; },
+        setDescription: function(newDescription) { description = newDescription },
+    };
+})
 .controller('DetailController',
     ['$scope', '$rootScope', '$http', '$timeout', '$route', '$routeParams', '$location', 
     function($scope, $rootScope, $http, $timeout, $route, $routeParams, $location) {

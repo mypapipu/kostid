@@ -5,10 +5,10 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ $_TITLE_ }}</title>
+        <title>[[ Page.title() ]]</title>
         <base href="/">
-        <meta name="keywords" content="{{ $_KEYWORDS_ }}" />
-        <meta name="description" content="{{ $_DESCRIPTION_ }}">
+        <meta name="keywords" content="[[ Page.keywords() ]]" />
+        <meta name="description" content="[[ Page.description() ]]">
         
         <link rel="shortcut icon" href="{{ asset('asset/frontend/img/favicon.ico') }}">
 
@@ -19,8 +19,6 @@
         {!! HTML::style('http://fonts.googleapis.com/css?family=Open+Sans:400,600,300') !!}
         @yield('custom_css')
 
-        
-    
         {!! HTML::script('asset/plugins/jQuery/jQuery-2.1.4.min.js'); !!}
         {!! HTML::script('asset/frontend/js/bootstrap.js'); !!}
         {!! HTML::script('https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'); !!}
@@ -34,7 +32,7 @@
         <![endif]-->
 
     </head>
-    <body>
+    <body class="page-on-load">
 
         <!--HEADER-->     
         <div class="row navbar head linedown">
@@ -97,6 +95,14 @@
             </div>
         </div>
 
+        <!-- BEGIN PAGE SPINNER -->
+        <div ng-spinner-bar class="page-spinner-bar">            
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+        <!-- END PAGE SPINNER -->
+
         <script>
             var TEMPLATE_PATH = '{!! url("asset/frontend/view/") !!}';
         </script>
@@ -110,6 +116,7 @@
         {!! HTML::script('asset/plugins/angular/ui-bootstrap-tpls-0.13.3.min.js'); !!}
 
         {!! HTML::script('asset/frontend/js/KostidApp.js'); !!}
+        {!! HTML::script('asset/frontend/js/directive.js'); !!}
         {!! HTML::script('asset/frontend/js/controllers/HomeController.js'); !!}
         {!! HTML::script('asset/frontend/js/controllers/CityController.js'); !!}
         {!! HTML::script('asset/frontend/js/controllers/DetailController.js'); !!}
