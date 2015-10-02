@@ -11,11 +11,12 @@ class WelcomeController extends Controller {
     
     public function index()
     {
-        $data['_TITLE_'] = 'Info Kost Terlengkap';
-        $data['_DESCRIPTION_'] = '';
-        $data['_KEYWORDS_'] = '';
-
-        return view('frontend.layout', $data);
+        return view('frontend.template');
+    }
+    
+    public function invoice()
+    {
+        return view('frontend.invoice');
     }
 
 }

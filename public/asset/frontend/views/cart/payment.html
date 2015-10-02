@@ -1,0 +1,85 @@
+<section class="order-header">
+    <div class="title animated fadeInDown">
+        <h1>Proses Order</h1>
+        <div class="bs-wizard">
+            <div class="col-xs-4 bs-wizard-step complete">
+                <div class="text-center bs-wizard-stepnum">Informasi</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/cart" class="bs-wizard-dot"></a>
+            </div>             
+            <div class="col-xs-4 bs-wizard-step active">
+                <div class="text-center bs-wizard-stepnum">Pembayaran</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/payment" class="bs-wizard-dot"></a>
+            </div>
+            <div class="col-xs-4 bs-wizard-step disabled">
+                <div class="text-center bs-wizard-stepnum">Konfirmasi</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="#" class="bs-wizard-dot"></a>
+            </div>  
+        </div> 
+    </div> 
+</section>
+
+<div id="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/cart/">Cart</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container margin_60">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form_title">
+                <h3>Informasi Pembayaran</h3>
+                <p>
+                    Silahkan melakukan pembayaran ke nomor di bawah ini
+                </p>
+            </div>
+            <button class="btn_blue" ng-click="confirm()">Konfirmasi</button>
+        </div>
+        
+        <aside class="col-md-4">
+            <div class="box_booking">
+                <h3>- Ringkasan -</h3>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        Mulai 1 Januari 2015
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        Hingga 31 Desember 2015
+                    </div>
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table_summary">
+                        <tbody>
+                        <tr>
+                            <td>Hari</td>
+                            <td class="text-right"><input type="hidden" id="cart_day" ng-model="cart.day" />[[cart.day]]</td>
+                        </tr>
+                        <tr>
+                            <td>Bulan</td>
+                            <td class="text-right"><input type="hidden" id="cart_month" ng-model="cart.month" />[[cart.month]]</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right">[[ cart.month + 'x IDR ' + item.price_format]]</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total</td>
+                            <td class="text-right">[[ 'IDR ' + ( (cart.month * item.price | number:0) | comma2decimal) ]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button class="btn_book" ng-click="confirm()">Konfirmasi</button>
+            </div>
+        </aside>
+    </div>
+</div>

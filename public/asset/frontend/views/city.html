@@ -1,0 +1,98 @@
+<section class="detail-header" style="background: url(https://drscdn.500px.org/photo/20406061/m%3D2048/55e46690d6dfb2459582df6b64056ec5) no-repeat center;">
+    <div class="detail-header-city">
+        <div class="detail-header-city-content">
+            <h1>[[city]]</h1>
+            <p>Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.</p>
+        </div>
+        <div class="bg-black"></div>
+    </div>
+</section>
+
+<div id="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">[[city]]</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container margin_60">
+    <div class="row">
+        <aside class="col-lg-3 col-md-3">
+        
+            <div class="sidebar-box">
+                <ul class="city-list">
+                    <li><a href="#" class="active">[[city]] <span>(1)</span> <i class="ion-chevron-right"></i></a></li>
+                    <li ng-repeat="item in area"><a href="#">[[item.name]] <span>(1)</span> <i class="ion-chevron-right"></i></a></li>
+                </ul>
+            </div>
+        
+            <div class="sidebar-box box-filter withpadding" id="box-filter">
+                <a data-toggle="collapse" href="#collapseFilters" aria-expanded="false" aria-controls="collapseFilters" class="header">Pencarian <i class="ion-plus pull-right"></i></a>
+                <div class="collapse in" id="collapseFilters">
+                    <div class="filter_type">
+                        <h6>Harga</h6>
+                        <ul>
+                            <li><input type="checkbox">Mulai dari Rp. 300 Rb - Rp. 500 Rb</li>
+                            <li><input type="checkbox">Mulai dari Rp. 500 Rb - Rp. 1 Jt</li>
+                            <li><input type="checkbox">Di atas Rp. 1 Jt</li>
+                        </ul>
+                    </div>
+                    <div class="filter_type">
+                        <h6>Fasilitas</h6>
+                        <ul>
+                            <li><input type="checkbox">Restoran</li>
+                            <li><input type="checkbox">Bar</li>
+                            <li><input type="checkbox">Minimarket</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        
+        <div class="col-lg-9 col-md-8">
+            
+            <div class="room_list wow fadeIn animated" data-wow-delay="0.1s" ng-repeat="item in room | limitTo:9:0">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-4 left">    
+                        <div class="img_list">
+                            <a href="detail/[[item.id]]">
+                                <img src="[[item.thumbnail]]" alt="[[item.name]]">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="clearfix visible-xs-block"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-6">
+                        <div class="room_list_desc">
+                            <h3><strong>[[item.name]]</strong></h3>
+                            <p>[[item.description]]</p>    
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-2">
+                        <div class="room_price">
+                            <div>
+                                <span>IDR [[item.price_format]]</span><small>*Per Bulan</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <hr>
+                
+            <div class="text-center">
+                <ul class="pagination">
+                    <li><a href="#">Prev</a></li>
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">Next</a></li>
+                </ul>
+            </div>
+                
+        </div>
+    </div>
+</div>

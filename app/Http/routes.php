@@ -37,14 +37,6 @@ Route::group(['prefix' => 'api'], function() {
 });
 
 Route::group(['domain' => 'kostid.dev'], function() {
-    Route::get('', 'Frontend\WelcomeController@index');
-
-    Route::get('malang', 'Frontend\WelcomeController@index');
-    Route::get('malang/page/{page}', 'Frontend\WelcomeController@index');
-    Route::get('malang/{district}', 'Frontend\WelcomeController@index');
-    Route::get('malang/{district}/page/{number}', 'Frontend\WelcomeController@index');
-    
-    Route::get('detail/{id}', 'Frontend\WelcomeController@index');
-    
-    Route::get('cart', 'Frontend\WelcomeController@index');
+    Route::any('/invoice/{id}', 'Frontend\WelcomeController@invoice')->where(['id' => '([0-9])']);
+    Route::any('/{page}', 'Frontend\WelcomeController@index')->where(['page' => '(.*)']);
 });

@@ -13,12 +13,9 @@ kostidApp.directive('ngSpinnerBar', ['$rootScope',
                 // hide the spinner bar on rounte change success(after the content loaded)
                 $rootScope.$on('$stateChangeSuccess', function() {
                     element.addClass('hide'); // hide spinner bar
-                    $('body').removeClass('page-on-load'); // remove page loading indicator
-                    Layout.setSidebarMenuActiveLink('match'); // activate selected link in the sidebar menu
-                   
                     // auto scroll to page top
                     setTimeout(function () {
-                        kostidApp.scrollTop(); // scroll to the top on content load
+                        // kostid.scrollTop(); // scroll to the top on content load
                     }, $rootScope.settings.layout.pageAutoScrollOnLoad);     
                 });
 
@@ -41,7 +38,7 @@ kostidApp.directive('a', function() {
     return {
         restrict: 'E',
         link: function(scope, elem, attrs) {
-            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+            if (attrs.ngClick || attrs.href === '' || attrs.href === '#' || attrs.href.match(/#/)) {
                 elem.on('click', function(e) {
                     e.preventDefault(); // prevent link click for above criteria
                 });

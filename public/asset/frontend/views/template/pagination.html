@@ -1,0 +1,23 @@
+<ul class="pagination">
+
+    <li ng-if="response.current_page != '1'">
+        <a href="<% first_link %>">First</a>
+    </li>
+
+    <li ng-if="response.current_page != '1'">
+        <a href="<% prev_link %>">Prev</a>
+    </li>
+
+    <li ng-repeat="page in pages">
+        <a href="<% page.link %>"><% page.label %></a>
+    </li>
+
+    <li ng-if="response.current_page != response.last_page">
+        <a href="<% next_link %>">Next</a>
+    </li>
+
+    <li ng-if="response.current_page != response.last_page">
+        <a href="<% last_link %>">Last</a>
+    </li>
+
+</ul>

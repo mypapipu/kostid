@@ -1,0 +1,109 @@
+<link href="/asset/frontend/css/default.css" rel="stylesheet" />
+<link href="/asset/frontend/css/component.css" rel="stylesheet" />
+
+<div id="wall_1" class="image" data-stellar-background-ratio="0.4">
+    <div class="txtprlx concon">
+        <div class="txtprllx">
+            <h1>[[city_name]]</h1>
+            <h4>consectetur adipiscing elit. Quisque condimentum dui velit, ut congue ipsum sodales fringilla. Nulla ultrices ligula et odio vestibulum facilisis.</h4>
+        </div>
+    </div>
+</div>
+<div class="row gray">
+    <div class="concon">
+        <p><a href="{{url()}}">Home</a> &gt; [[city_name]]</p>
+    </div>
+</div>
+<div class="concon margintop">
+    <div class="col-md-3 margintop">
+        <button class="btn btn-pink btn-lg animated fadeIn width-max">View On Map</button>
+        <form role="form" class="box">
+            <div class="bbb margintop">Price</div>
+            <div class="checkbox"><label><input type="checkbox" value="" checked>From $10 to $50</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">From $50 to $80</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">From $80 to $100</label></div>
+        </form>
+        <form role="form" class="box">
+            <div class="bbb margintop">Star Rating</div>
+            <div class="checkbox"><label><input type="checkbox" value="" checked><fieldset class="bintang"><span class="starImg star-50"></span></fieldset></label></div>
+            <div class="checkbox"><label><input type="checkbox" value=""><fieldset class="bintang"><span class="starImg star-40"></span></fieldset></label></div>
+            <div class="checkbox"><label><input type="checkbox" value=""><fieldset class="bintang"><span class="starImg star-30"></span></fieldset></label></div>
+            <div class="checkbox"><label><input type="checkbox" value=""><fieldset class="bintang"><span class="starImg star-20"></span></fieldset></label></div>
+            <div class="checkbox"><label><input type="checkbox" value=""><fieldset class="bintang"><span class="starImg star-10"></span></fieldset></label></div>
+        </form>
+        <form role="form" class="box">
+            <div class="bbb margintop">Review Score</div>
+            <div class="checkbox"><label><input type="checkbox" value="" checked>Super</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Very Good</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Good</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Pleasant</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">No Rating</label></div>
+        </form>
+        <form role="form" class="box">
+            <div class="bbb margintop">Facility</div>
+            <div class="checkbox"><label><input type="checkbox" value="" checked>Pet Allowed</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Wifi</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Good</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Pleasant</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Good</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Pleasant</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">No Rating</label></div>
+        </form>
+        <form role="form" class="box">
+            <div class="bbb margintop">District</div>
+            <div class="checkbox"><label><input type="checkbox" value="" checked>Jawa</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Kalimantan</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Sumatra</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Sulawesi</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Papua</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">NTT</label></div>
+            <div class="checkbox"><label><input type="checkbox" value="">Maluku</label></div>
+        </form>
+    </div>
+
+    <div class="col-md-9 margintop">
+        <div class="main">
+            <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+                <div class="cbp-vm-options">
+                    <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
+                    <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+                </div>
+                <div class="grid">
+                    <ul>
+                        <li ng-repeat="item in list | limitTo:12:0">
+                            <figure class="effect-chico cbp-vm-image">
+                                <a href="/detail/[[item.image[0].product_id]]">
+                                    <img src="[[item.image[0].image_url]]" alt="[[item.name]]" border="0">
+                                </a>
+                            </figure>
+                            <h2 class="cbp-vm-title">[[item.name]]</h2>
+                            <div class="cbp-vm-price">[[item.price]]</div>
+                            <div class="cbp-vm-details">[[item.description]]</div>
+                            <a class="cbp-vm-icon cbp-vm-add" href="/detail/[[item.id]]">Add to cart</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row concon">
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-9 text-center margintop">
+    <ul class="pagination">
+        <li><a href="#">Prev</a></li>
+        <li><a href="/malang/page/1">1</a></li>
+        <li><a href="/malang/page/2">2</a></li>
+        <li><a href="/malang/page/3">3</a></li>
+        <li><a href="/malang/page/4">4</a></li>
+        <li><a href="/malang/page/5">5</a></li>
+        <li><a href="#">Next</a></li>
+        </ul>
+    </div>
+</div>
+
+
+<script src="/asset/frontend/js/classie.js"></script>
+<script src="/asset/frontend/js/cbpViewModeSwitch.js"></script>

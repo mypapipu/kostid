@@ -1,0 +1,103 @@
+<section class="detail-header" style="background: url([[item.thumbnail_large]]) no-repeat center;">
+    <div class="detail-header-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6">
+                    <h1>[[item.name]]</h1>
+                    <span>[[item.address]]</span>
+                    <span>[[item.area_name]], [[item.city_name]]</span>
+                    <span>[[item.phone]]</span>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="price">
+                        <span><sup>IDR</sup> [[item.price_format]]</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div id="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">[[item.type_name]]</a></li>
+            <li><a href="#">[[item.city_name]]</a></li>
+            <li><a href="#">[[item.area_name]]</a></li>
+            <li>[[item.name]]</li>
+        </ul>
+    </div>
+</div>
+
+<div class="container margin_60">
+    <div class="row">
+        <div class="col-md-8" id="single_item">
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>Description</h3>
+                </div>
+                <div class="col-md-9"><p>[[item.description]]</p></div>
+            </div>
+        </div>
+        
+        <aside class="col-md-4">
+            <p class="hidden-sm hidden-xs">
+                <a class="btn_map">View on map</a>
+            </p>
+            <div class="box_booking">
+                <h3>- Booking -</h3>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dateStart" ng-click="openDateStart($event)" is-open="statusDateStart.opened" min-date="minDateStart" max-date="maxDate" datepicker-options="dateOptions" ng-change="selectDateStart(dateStart)" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openDateStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dateEnd" ng-click="openDateEnd($event)" is-open="statusDateEnd.opened" min-date="minDateEnd" max-date="maxDate" datepicker-options="dateOptions" ng-change="selectDateEnd(dateEnd)" ng-required="true" close-text="Close" />
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="openDateEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="table-responsive">
+                    <table class="table table_summary">
+                        <tbody>
+                        <tr>
+                            <td>Hari</td>
+                            <td class="text-right"><input type="hidden" id="cart_day" ng-model="cart.day" />[[cart.day]]</td>
+                        </tr>
+                        <tr>
+                            <td>Bulan</td>
+                            <td class="text-right"><input type="hidden" id="cart_month" ng-model="cart.month" />[[cart.month]]</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td class="text-right">[[ cart.month + 'x IDR ' + item.price_format]]</td>
+                        </tr>
+                        <tr class="total">
+                            <td>Total</td>
+                            <td class="text-right">[[ 'IDR ' + ( (cart.month * item.price | number:0) | comma2decimal) ]]</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                    
+                <button class="btn_book" ng-click="book()" ng-bind="bookProcess">Book now</button>
+            </div>
+        
+        </aside>
+    </div>
+</div>

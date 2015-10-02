@@ -1,48 +1,78 @@
-angular.module('DetailController', [])
-.config(['$routeProvider', '$locationProvider',
-    function($routeProvider, $locationProvider) {
-        $routeProvider
-            .when("/detail/:id", {
-                templateUrl: TEMPLATE_PATH + "/detail.html",
-                controller: 'DetailController'
-            })
-            .otherwise({redirectTo: '/'});
-
-        $locationProvider.html5Mode(true);
-    }])
-.factory('Page', function() {
-    var title = 'default';
-    return {
-        title: function() { return title; },
-        setTitle: function(newTitle) { title = newTitle },
-        keywords: function() { return keywords; },
-        setKeywords: function(newKeywords) { keywords = newKeywords },
-        description: function() { return description; },
-        setDescription: function(newDescription) { description = newDescription },
-    };
-})
+angular.module('DetailController', ['ui.bootstrap', 'ngCookies'])
 .controller('DetailController',
-    ['$scope', '$rootScope', '$http', '$timeout', '$route', '$routeParams', '$location', 
-    function($scope, $rootScope, $http, $timeout, $route, $routeParams, $location) {
-        var history = [];
+    ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$cookies', '$location', 
+    function($scope, $rootScope, $http, $state, $stateParams, $cookies, $location) {
 
-        $rootScope.$on('$routeChangeSuccess', function() {
-            history.push($location.$$path + '?' + $.param(getAllUrlParameter()));
-        });
+        $scope.cart = [];
+        $scope.Math = Window.Math;
 
-        $rootScope.back = function() {
-            $rootScope.redirect($rootScope.prevUrl());
+        var today = new Date();
+        var tomorrow = new Date();
+        var tomorrow = tomorrow.setDate(today.getDate() + 1);
+
+        $scope.dateStart = today;
+        $scope.dateEnd = tomorrow;
+        $scope.minDateStart = $scope.minDate ? null : new Date();
+        $scope.minDateEnd = tomorrow;
+        $scope.maxDate = new Date(2020, 5, 22);
+
+        $scope.openDateStart = function($event) {
+            $scope.statusDateStart.opened = true;
+        };
+
+        $scope.openDateEnd = function($event) {
+            $scope.statusDateEnd.opened = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.statusDateStart = {
+            opened: false
+        };
+
+        $scope.statusDateEnd = {
+            opened: false
+        };
+
+        //date default
+        $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
+        $scope.cart.month = Math.ceil($scope.cart.day/30);
+
+        //date on change
+        $scope.selectDateStart = function(dateStart) {
+            $scope.dateStart = dateStart;
+            $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
+            $scope.cart.month = Math.ceil($scope.cart.day/30);
+            minDateEnd = dateStart + 1;
         }
 
-        $rootScope.prevUrl = function() {
-            return history.length > 1 ? history.splice(-2)[0] : "/";
+        $scope.selectDateEnd = function(dateEnd) {
+            $scope.dateEnd = dateEnd;
+            $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
+            $scope.cart.month = Math.ceil($scope.cart.day/30);
         }
 
-        $http.get('/api/product/' + $routeParams.id)
+        $http.get('http://echo.web.id/kost/api.php?key=product&id=' + $stateParams.id)
             .success(function(response) {
-                $scope.data = response;
+                $scope.item = response.data[0];
+                $rootScope.$state.current.data.pageTitle = $scope.item.name;
             })
             .error(function() {
                 console.log('Unable to retrieve info from JSON file.');
              });
+
+        $scope.bookProcess = 'Book';
+        $scope.book = function() {
+            
+            $scope.bookProcess = 'Process';
+
+            $cookies.put('cart_date_start', $scope.dateStart);
+            $cookies.put('cart_date_end', $scope.dateEnd);
+            $cookies.put('cart_date_product', $scope.item.id);
+
+            $location.path( "/cart" );
+        }
     }]);

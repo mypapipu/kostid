@@ -1,0 +1,53 @@
+<section class="order-header">
+    <div class="title animated fadeInDown">
+        <h1>Proses Order</h1>
+        <div class="bs-wizard">
+            <div class="col-xs-4 bs-wizard-step complete">
+                <div class="text-center bs-wizard-stepnum">Informasi</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/cart" class="bs-wizard-dot"></a>
+            </div>             
+            <div class="col-xs-4 bs-wizard-step complete">
+                <div class="text-center bs-wizard-stepnum">Pembayaran</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/payment" class="bs-wizard-dot"></a>
+            </div>
+            <div class="col-xs-4 bs-wizard-step active">
+                <div class="text-center bs-wizard-stepnum">Konfirmasi</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/confirm" class="bs-wizard-dot"></a>
+            </div>  
+        </div> 
+    </div> 
+</section>
+
+<div id="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/cart/">Cart</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container margin_60">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form_title">
+                <h3>Konfirmasi Pembayaran</h3>
+                <p>
+                    Silahkan melakukan pembayaran ke nomor di bawah ini
+                </p>
+            </div>
+        </div>
+        
+        <aside class="col-md-4">
+            <div class="box_booking">
+                <h3>- Terima Kasih -</h3>
+                <p>Nihil inimicus ex nam, in ipsum dignissim duo. Tale principes interpretaris vim ei, has posidonium definitiones ut. Duis harum fuisset ut his, duo an dolor epicuri appareat.</p>
+                <hr />
+                <button class="btn_invoice" ng-click="invoice()">Invoice</button>
+            </div>
+        </aside>
+    </div>
+</div>

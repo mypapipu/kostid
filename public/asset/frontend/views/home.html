@@ -1,0 +1,97 @@
+<div id="slider"></div>
+
+<div class="container margin_60">
+
+    <div class="main_title">
+        <h2>Kost <span>Favorit</span></h2>
+        <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s" ng-repeat="item in favorite | limitTo:9:0">
+            <div class="item_container">
+                <div class="img">
+                    <a href="/detail/[[item.id]]">
+                        <img src="[[item.thumbnail]]" class="img-responsive" alt="[[item.name]]">
+                        <div class="info">
+                            <span class="price"><sup>IDR</sup> [[item.price_format]]</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="title">
+                    <h3>[[item.name]]</h3>
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    <p class="text-center margin_bottom_30">
+        <a href="/popular/" class="btn_blue">Lihat Semua ([[favorite_total]]) </a>
+    </p>
+        
+    <hr>
+    
+    <div class="main_title">
+        <h2>Kost <span>Terbaru</span></h2>
+        <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+    </div>
+        
+    <div class="row">
+        <div class="col-md-4 col-sm-6 wow zoomIn" data-wow-delay="0.1s" ng-repeat="item in favorite | limitTo:9:0">
+            <div class="item_container">
+                <div class="img">
+                    <a href="/detail/[[item.id]]">
+                        <img src="[[item.thumbnail]]" class="img-responsive" alt="[[item.name]]">
+                        <div class="info">
+                            <span class="price"><sup>IDR</sup> [[item.price_format]]</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="title">
+                    <h3>[[item.name]]</h3>
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    <p class="text-center">
+        <a href="/terbaru/" class="btn_blue">Lihat Semua ([[favorite_total]]) </a>
+    </p>
+
+</div>
+
+<div class="white_bg">
+    <div class="container margin_60">
+        <div class="main_title">
+            <h2>Berdasarkan <span>Fasilitas</span></h2>
+            <p>Quisque at tortor a libero posuere laoreet vitae sed arcu. Curabitur consequat.</p>
+        </div>
+        <div class="row margin_bottom_45">
+            <div class="col-md-4 home_facilities">
+                <ul>
+                    <li><a href="#"><i class="ion-android-restaurant"></i>Restoran <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-bar"></i>Bar <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-cart"></i>Minimarket <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-bicycle"></i>Area Sepeda <span class="number">10</span></a></li>
+                </ul>
+            </div>
+            <div class="col-md-4 home_facilities">
+                <ul>
+                    <li><a href="#"><i class="ion-android-restaurant"></i>Restoran <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-bar"></i>Bar <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-cart"></i>Minimarket <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-bicycle"></i>Area Sepeda <span class="number">10</span></a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 home_facilities">
+                <ul>
+                    <li><a href="#"><i class="ion-android-restaurant"></i>Restoran <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-bar"></i>Bar <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-cart"></i>Minimarket <span class="number">10</span></a></li>
+                    <li><a href="#"><i class="ion-android-bicycle"></i>Area Sepeda <span class="number">10</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
