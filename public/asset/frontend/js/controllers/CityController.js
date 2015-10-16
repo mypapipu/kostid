@@ -1,4 +1,4 @@
-angular.module('CityController', ['ui.bootstrap'])
+angular.module('CityController', [])
 .controller('CityController',
     ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$location', 
     function($scope, $rootScope, $http, $state, $stateParams, $location) {

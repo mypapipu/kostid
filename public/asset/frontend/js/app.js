@@ -133,19 +133,19 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
                 }]
             }
         })
-        // Payment
-        .state('payment', {
-            url: "/payment",
-            templateUrl: TEMPLATE_PATH + "/cart/payment.html",      
-            controller: "PaymentController",
-            data: {pageTitle: 'Pembayaran'},
+        // Checkout
+        .state('Checkout', {
+            url: "/checkout",
+            templateUrl: TEMPLATE_PATH + "/cart/checkout.html",      
+            controller: "CheckoutController",
+            data: {pageTitle: 'Checkout'},
             resolve: {
                 deps: ['$ocLazyLoad', function($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'kostidApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            ASSET_PATH + '/frontend/js/controllers/PaymentController.js'
+                            ASSET_PATH + '/frontend/js/controllers/CheckoutController.js'
                         ] 
                     });
                 }]
@@ -172,7 +172,6 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         // Invoice
         .state('invoice', {
             url: "/invoice/:id",
-            templateUrl: TEMPLATE_PATH + "/cart/invoice.html",      
             controller: "InvoiceController",
             data: {pageTitle: 'Invoice'},
             resolve: {

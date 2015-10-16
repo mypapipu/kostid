@@ -1,19 +1,19 @@
-angular.module('DetailController', ['ui.bootstrap', 'ngCookies'])
+angular.module('DetailController', ['ui.bootstrap'])
 .controller('DetailController',
-    ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$cookies', '$location', 
-    function($scope, $rootScope, $http, $state, $stateParams, $cookies, $location) {
+    ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$location', 
+    function($scope, $rootScope, $http, $state, $stateParams, $location) {
 
-        $scope.cart = [];
+        $scope.cart = {};
+        $scope.item = {};
         $scope.Math = Window.Math;
 
-        var today = new Date();
-        var tomorrow = new Date();
-        var tomorrow = tomorrow.setDate(today.getDate() + 1);
+        var date = new Date();
 
-        $scope.dateStart = today;
-        $scope.dateEnd = tomorrow;
+        $scope.dateStart = date.setDate(date.getDate() + 0);
+        $scope.dateEnd = date.setDate(date.getDate() + 1);
+        
         $scope.minDateStart = $scope.minDate ? null : new Date();
-        $scope.minDateEnd = tomorrow;
+        $scope.minDateEnd = date.setDate(date.getDate() + 1);
         $scope.maxDate = new Date(2020, 5, 22);
 
         $scope.openDateStart = function($event) {
@@ -68,11 +68,27 @@ angular.module('DetailController', ['ui.bootstrap', 'ngCookies'])
         $scope.book = function() {
             
             $scope.bookProcess = 'Process';
+            $scope.onProcess = true;
 
-            $cookies.put('cart_date_start', $scope.dateStart);
-            $cookies.put('cart_date_end', $scope.dateEnd);
-            $cookies.put('cart_date_product', $scope.item.id);
+            var dataObj = {
+                product: $stateParams.id,
+                price: ($scope.cart.day * $scope.item.price),
+                date_start: $scope.dateStart,
+                date_end: $scope.dateEnd,
+                };
 
-            $location.path( "/cart" );
+            $http({
+                method: 'POST',
+                url: 'http://echo.web.id/kost/post.php',
+                data: dataObj,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).success(function(data, status, headers, config) {
+                $location.path("/cart");
+                // alert( " message: " + JSON.stringify({data: data}));
+            }).error(function(data, status, headers, config) {
+                $scope.onProcess = false;
+                $scope.bookProcess = "Error";
+                // alert( "failure message: " + JSON.stringify({data: data}));
+            }); 
         }
     }]);

@@ -77,11 +77,11 @@
                         <tbody>
                         <tr>
                             <td>Hari</td>
-                            <td class="text-right"><input type="hidden" id="cart_day" ng-model="cart.day" />[[cart.day]]</td>
+                            <td class="text-right">[[cart.day]]</td>
                         </tr>
                         <tr>
                             <td>Bulan</td>
-                            <td class="text-right"><input type="hidden" id="cart_month" ng-model="cart.month" />[[cart.month]]</td>
+                            <td class="text-right">[[cart.month]]</td>
                         </tr>
                         <tr>
                             <td></td>
@@ -95,7 +95,7 @@
                     </table>
                 </div>
                     
-                <button class="btn_book" ng-click="book()" ng-bind="bookProcess">Book now</button>
+                <button class="btn_book" ng-click="book()" ng-bind="bookProcess" ng-disabled="onProcess">Book now</button>
             </div>
         
         </aside>

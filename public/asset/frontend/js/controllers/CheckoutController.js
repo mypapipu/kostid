@@ -1,12 +1,14 @@
-angular.module('InvoiceController', [])
-.controller('InvoiceController',
+angular.module('CheckoutController', [])
+.controller('CheckoutController',
     ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$location', 
     function($scope, $rootScope, $http, $state, $stateParams, $location) {
 
+        $scope.checkout = function() {
+            $location.path("/checkout");
+        };
+
         $scope.session = {};
         $scope.item = {};
-
-        alert("her");
 
         $http.get('http://echo.web.id/kost/checkout.php')
             .success(function(data, status, headers, config) {

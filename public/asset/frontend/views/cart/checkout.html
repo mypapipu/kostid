@@ -1,0 +1,94 @@
+<section class="order-header">
+    <div class="title animated fadeInDown">
+        <h1>Order</h1>
+        <div class="bs-wizard">
+            <div class="col-xs-4 bs-wizard-step complete">
+                <div class="text-center bs-wizard-stepnum">Cart</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/cart/" class="bs-wizard-dot"></a>
+            </div>             
+            <div class="col-xs-4 bs-wizard-step active">
+                <div class="text-center bs-wizard-stepnum">Checkout</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="/checkout/" class="bs-wizard-dot"></a>
+            </div>
+            <div class="col-xs-4 bs-wizard-step disabled">
+                <div class="text-center bs-wizard-stepnum">Confirm</div>
+                <div class="progress"><div class="progress-bar"></div></div>
+                <a href="#" class="bs-wizard-dot"></a>
+            </div>  
+        </div> 
+    </div> 
+</section>
+
+<div id="breadcrumbs">
+    <div class="container">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="/checkout/">Checkout</a></li>
+        </ul>
+    </div>
+</div>
+
+<div class="container margin_60">
+    <div class="row">
+        <div class="col-md-12">
+        
+            <div class="form_title">
+                <h3><strong><i class="ion-checkmark"></i></strong>Terima Kasih!</h3>
+                <p>Transaksi Anda telah tersimpan, silahkan melakukan pembayaran.</p>
+            </div>
+            
+            <div class="step">
+                <p>Lorem ipsum dolor sit amet, nostrud nominati vis ex, essent conceptam eam ad. Cu etiam comprehensam nec. Cibo delicata mei an, eum porro legere no. Te usu decore omnium, quem brute vis at, ius esse officiis legendos cu. Dicunt voluptatum at cum. Vel et facete equidem deterruisset, mei graeco cetero labores et. Accusamus inciderint eu mea.</p>
+            </div>
+
+            <div class="form_title">
+                <h3><strong><i class="ion-bag"></i></strong>Pemesanan</h3>
+                <p>Mussum ipsum cacilds, vidis litro abertis.</p>
+            </div>
+
+            <div class="step">
+                <table class="table confirm">
+                    <thead>
+                        <tr>
+                            <th colspan="2"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Invoice</strong></td>
+                            <td>[[session.invoice]]</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nama</strong></td>
+                            <td>[[item.name]]</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Alamat</strong></td>
+                            <td>[[item.address]]</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mulai</strong></td>
+                            <td>[[session.date_start | date:"dd-MMM-yyyy"]]</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hingga</strong></td>
+                            <td>[[session.date_end | date:"dd-MMM-yyyy"]]</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Total Harga</strong></td>
+                            <td>[[ 'IDR ' + ( (session.price | number:0) | comma2decimal) ]]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="row text-center">
+                <a class="btn_checkout" href="/invoice/[[session.invoice]]" target="_blank">Lihat Invoice</a>
+                <a class="btn_checkout" href="/confirm/">Konfirmasi Pembayaran</a>
+            </div>
+
+        </div>
+    </div>
+</div>

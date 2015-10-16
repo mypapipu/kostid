@@ -1,70 +1,85 @@
-angular.module('CartController', ['ui.bootstrap', 'ngCookies'])
+angular.module('CartController', ['ui.bootstrap'])
 .controller('CartController',
-    ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$cookies', '$location', 
-    function($scope, $rootScope, $http, $state, $stateParams, $cookies, $location) {
+    ['$scope', '$rootScope', '$http', '$state', '$stateParams', '$location', 
+    function($scope, $rootScope, $http, $state, $stateParams, $location) {
 
-        $scope.cart = [];
+        $scope.checkout = function() {
+            $location.path("/checkout");
+        };
+
+        $scope.remove = function() {
+            $scope.cart = null;
+        }
+
+        $scope.cart = {};
+        $scope.item = {};
+        $scope.session = {};
         $scope.Math = Window.Math;
 
-        var today = new Date();
-        var tomorrow = new Date();
-        var tomorrow = tomorrow.setDate(today.getDate() + 1);
+        var date = new Date();
+        var date2 = new Date();
 
-        $scope.dateStart = today;
-        $scope.dateEnd = tomorrow;
-        $scope.minDateStart = $scope.minDate ? null : new Date();
-        $scope.minDateEnd = tomorrow;
-        $scope.maxDate = new Date(2020, 5, 22);
+        $http.get('http://echo.web.id/kost/get.php')
+            .success(function(data, status, headers, config) {
+                $scope.session = data;
 
-        $scope.openDateStart = function($event) {
-            $scope.statusDateStart.opened = true;
-        };
+                $http.get('http://echo.web.id/kost/api.php?key=product&id=' + $scope.session.product)
+                .success(function(response) {
+                    $scope.item = response.data[0];
+                })
+                .error(function() {
+                    console.log('Unable to retrieve info from JSON file.');
+                 });
 
-        $scope.openDateEnd = function($event) {
-            $scope.statusDateEnd.opened = true;
-        };
+                $scope.dateStart = $scope.session.date_start;
+                $scope.dateEnd = $scope.session.date_end;
 
-        $scope.dateOptions = {
-            formatYear: 'yy',
-            startingDay: 1
-        };
+                var date2 = new Date($scope.dateStart);
 
-        $scope.statusDateStart = {
-            opened: false
-        };
+                $scope.minDateStart = $scope.minDate ? null : new Date();
+                $scope.minDateEnd = date2.setDate(date2.getDate() + 1);
+                $scope.maxDate = new Date(2020, 5, 22);
 
-        $scope.statusDateEnd = {
-            opened: false
-        };
+                $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
+                $scope.cart.month = Math.ceil($scope.cart.day/30);
 
-        //date default
-        $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
-        $scope.cart.month = Math.ceil($scope.cart.day/30);
+                $scope.openDateStart = function($event) {
+                    $scope.statusDateStart.opened = true;
+                };
 
-        //date on change
-        $scope.selectDateStart = function(dateStart) {
-            $scope.dateStart = dateStart;
-            $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
-            $scope.cart.month = Math.ceil($scope.cart.day/30);
-            minDateEnd = dateStart + 1;
-        }
+                $scope.openDateEnd = function($event) {
+                    $scope.statusDateEnd.opened = true;
+                };
 
-        $scope.selectDateEnd = function(dateEnd) {
-            $scope.dateEnd = dateEnd;
-            $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
-            $scope.cart.month = Math.ceil($scope.cart.day/30);
-        }
+                $scope.dateOptions = {
+                    formatYear: 'yy',
+                    startingDay: 1
+                };
 
-        $http.get('http://echo.web.id/kost/api.php?key=product&id=1')
-            .success(function(response) {
-                $scope.order = response.data;
-                $scope.item = response.data[0];
+                $scope.statusDateStart = {
+                    opened: false
+                };
+
+                $scope.statusDateEnd = {
+                    opened: false
+                };
+                
+                $scope.selectDateStart = function(dateStart) {
+                    $scope.dateStart = dateStart;
+                    $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
+                    $scope.cart.month = Math.ceil($scope.cart.day/30);
+                    minDateEnd = dateStart + 1;
+                }
+
+                $scope.selectDateEnd = function(dateEnd) {
+                    $scope.dateEnd = dateEnd;
+                    $scope.cart.day = ($scope.dateEnd - $scope.dateStart) / (24*60*60*1000);
+                    $scope.cart.month = Math.ceil($scope.cart.day/30);
+                }
+
+
             })
             .error(function() {
                 console.log('Unable to retrieve info from JSON file.');
-             });
-
-        $scope.payment = function() {
-            $location.path( "/payment" );
-        }
+            });
     }]);

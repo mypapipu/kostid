@@ -37,6 +37,6 @@ Route::group(['prefix' => 'api'], function() {
 });
 
 Route::group(['domain' => 'kostid.dev'], function() {
-    Route::any('/invoice/{id}', 'Frontend\WelcomeController@invoice')->where(['id' => '([0-9])']);
+    Route::any('/invoice/{id}', 'Frontend\WelcomeController@invoice')->where(['id' => '([a-z0-9]+)']);
     Route::any('/{page}', 'Frontend\WelcomeController@index')->where(['page' => '(.*)']);
 });
