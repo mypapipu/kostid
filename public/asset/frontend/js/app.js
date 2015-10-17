@@ -63,7 +63,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // City
         .state('city', {
-            url: "/malang",
+            url: "/malang{dummyParam:[/]?}",
             templateUrl: TEMPLATE_PATH + "/city.html",      
             controller: "CityController",
             data: {pageTitle: 'City'},
@@ -81,7 +81,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // City
         .state('lowokwaru', {
-            url: "/malang/lowokwaru",
+            url: "/malang/lowokwaru{dummyParam:[/]?}",
             templateUrl: TEMPLATE_PATH + "/city.html",      
             controller: "CityController",
             data: {pageTitle: 'City'},
@@ -99,7 +99,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // Detail
         .state('detail', {
-            url: "/detail/:id",
+            url: "/detail/:id{dummyParam:[/]?}",
             templateUrl: TEMPLATE_PATH + "/detail.html",      
             controller: "DetailController",
             data: {pageTitle: 'Detail'},
@@ -117,7 +117,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // Cart
         .state('cart', {
-            url: "/cart",
+            url: "/cart{dummyParam:[/]?}",
             templateUrl: TEMPLATE_PATH + "/cart/cart.html",      
             controller: "CartController",
             data: {pageTitle: 'Informasi Transaksi'},
@@ -135,7 +135,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // Checkout
         .state('Checkout', {
-            url: "/checkout",
+            url: "/checkout{dummyParam:[/]?}",
             templateUrl: TEMPLATE_PATH + "/cart/checkout.html",      
             controller: "CheckoutController",
             data: {pageTitle: 'Checkout'},
@@ -153,7 +153,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // Confirm
         .state('confirm', {
-            url: "/confirm",
+            url: "/confirm{dummyParam:[/]?}",
             templateUrl: TEMPLATE_PATH + "/cart/confirm.html",      
             controller: "ConfirmController",
             data: {pageTitle: 'Konfirmasi'},
@@ -171,7 +171,7 @@ kostidApp.config(['$stateProvider', '$urlRouterProvider', function($stateProvide
         })
         // Invoice
         .state('invoice', {
-            url: "/invoice/:id",
+            url: "/invoice/:id{dummyParam:[/]?}",
             controller: "InvoiceController",
             data: {pageTitle: 'Invoice'},
             resolve: {
